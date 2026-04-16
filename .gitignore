@@ -1,0 +1,6 @@
+.stack-work/
+*~
+.envrc
+dist-newstyle/
+dist/
+.DS_Store

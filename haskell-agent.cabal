@@ -1,0 +1,76 @@
+cabal-version:      2.2
+name:               haskell-agent
+version:            0.1.0.0
+description:
+  Please see the README on GitHub at <https://github.com/githubuser/haskell-agent#readme>
+
+homepage:           https://github.com/githubuser/haskell-agent#readme
+bug-reports:        https://github.com/githubuser/haskell-agent/issues
+author:             Flavio Corpa
+maintainer:         flaviocorpa@gmail.com
+copyright:          2026 © Flavio Corpa
+license:            BSD-3-Clause
+license-file:       LICENSE
+build-type:         Simple
+extra-source-files:
+  CHANGELOG.md
+  README.md
+
+source-repository head
+  type:     git
+  location: https://github.com/kutyel/haskell-agent
+
+executable haskell-agent-exe
+  main-is:            Main.hs
+  other-modules:      Paths_haskell_agent
+  autogen-modules:    Paths_haskell_agent
+  hs-source-dirs:     app
+  ghc-options:
+    -Wall -Wcompat -Widentities -Wincomplete-record-updates
+    -Wincomplete-uni-patterns -Wmissing-export-lists
+    -Wmissing-home-modules -Wpartial-fields -Wredundant-constraints
+    -threaded -rtsopts -with-rtsopts=-N
+
+  build-depends:
+    , aeson
+    , base       >=4.7 && <5
+    , claude
+    , directory
+    , filepath
+    , protolude
+    , text
+    , vector
+
+  default-language:   Haskell2010
+  default-extensions:
+    NoImplicitPrelude
+    DeriveAnyClass
+    DeriveAnyClass
+    DeriveGeneric
+    DeriveGeneric
+    DerivingStrategies
+    DuplicateRecordFields
+    GeneralizedNewtypeDeriving
+    ImportQualifiedPost
+    NamedFieldPuns
+    OverloadedLists
+    OverloadedStrings
+    RecordWildCards
+
+test-suite haskell-agent-test
+  type:             exitcode-stdio-1.0
+  main-is:          Spec.hs
+  other-modules:    Paths_haskell_agent
+  autogen-modules:  Paths_haskell_agent
+  hs-source-dirs:   test
+  ghc-options:
+    -Wall -Wcompat -Widentities -Wincomplete-record-updates
+    -Wincomplete-uni-patterns -Wmissing-export-lists
+    -Wmissing-home-modules -Wpartial-fields -Wredundant-constraints
+    -threaded -rtsopts -with-rtsopts=-N
+
+  build-depends:
+    , base           >=4.7 && <5
+    , haskell-agent
+
+  default-language: Haskell2010
