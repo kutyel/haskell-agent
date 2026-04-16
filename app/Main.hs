@@ -123,6 +123,14 @@ newtype ReadFileInput = ReadFileInput {path :: Text}
 newtype ListFilesInput = ListFilesInput {path :: Maybe Text}
   deriving newtype (Aeson.FromJSON)
 
+data EditFileInput = EditFileInput
+  { path :: Text,
+    old_str :: Text,
+    new_str :: Text
+  }
+  deriving stock (Generic)
+  deriving anyclass (Aeson.FromJSON)
+
 readFileTool :: Tool
 readFileTool =
   functionTool
@@ -206,14 +214,6 @@ listFilesAgentTool =
     { tool = listFilesTool,
       handler = listFilesHandler
     }
-
-data EditFileInput = EditFileInput
-  { path :: Text,
-    old_str :: Text,
-    new_str :: Text
-  }
-  deriving stock (Generic)
-  deriving anyclass (Aeson.FromJSON)
 
 editFileTool :: Tool
 editFileTool =
